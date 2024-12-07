@@ -1,0 +1,541 @@
+@font-face {
+    font-family: "myFont1";
+    src: url(fonts/Satoshi-Regular.woff);
+}
+@font-face {
+    font-family: "myFont2";
+    src: url(fonts/Satoshi-Italic.woff);
+}
+html{
+    scroll-behavior: smooth;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "myFont1";
+    scroll-behavior: smooth;
+}
+/*secciones*/
+.common-background{
+    background-color: #f6eee4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*nav*/
+/* Estilos para el nav */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 1000; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    height: 15vh; 
+    padding: 0 5vw; 
+}
+  /* Divs dentro del nav */
+  #div1, #div2{
+    display: flex;
+    gap:10px; 
+  }
+  
+  /* Estilos para los enlaces en div1 */
+  #div1 a, #div2 a{
+    margin-right: 5vw;
+    text-decoration: none;
+    line-height: 1;
+    color: black;
+    font-size: 1.5vw;
+    white-space: nowrap;
+    transition: letter-spacing 0.4s ease-in-out;
+  }
+  
+#div1 a:hover, 
+#div2 a:hover{
+    color: #c94136;
+    transition: 0.4s;
+    letter-spacing: 2px;
+}
+/* logo section */
+#logo{
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  top: 2%;
+  transform: translateX(-50%);
+  max-width: 5%;
+  z-index: 2000;
+}
+#logo img{
+  width: 100%;
+  height: auto;
+}
+/* Foto principal */
+#foto {
+  display: flex;
+  flex-direction: column; /* Alinea los elementos verticalmente */
+  align-items: center; /* Centra horizontalmente */
+  justify-content: center; /* Centra verticalmente */
+  margin: 0 auto;
+  padding-top: 13vh; 
+  width: 100%;
+  max-width: 50%;
+}
+
+#foto img{
+    max-width: 50%; /* Ajusta el ancho máximo para que sea responsive */
+    height: auto;
+    border-radius: 10px;
+}
+.nombre{
+    position: relative;
+    text-align: center;
+    font-size: 2.5rem;
+    background: rgba(0, 0, 0, 0);
+    color: #c94136;
+    right: 12.5vw;
+    bottom: 3.3vh;
+}
+.apellido{
+    position: relative;
+    bottom: 76vh;
+    left: 12vw;
+    font-size: 2.5rem;
+    background: rgba(0, 0, 0, 0);
+    color: #c94136;
+}
+
+.texto1 h2{
+    position: relative;
+    font-family: "myFont2";
+    font-weight:lighter;
+    font-size: 4rem;
+    color: #232323;
+    display: flex;
+    justify-content:right;
+    left: 30vw;
+    bottom: 50vh;
+    background: rgba(0, 0, 0, 0);
+}
+.texto1 h3{
+    position: relative;
+    left: 30vw;
+    bottom: 49vh;
+    display: flex;
+    color: #ad332a;
+    font-size: 1.5rem;
+    background: rgba(0, 0, 0, 0);
+}
+/* Estilos iniciales y animación */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.5s ease, transform 1.5s ease;
+  }
+  
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+/* SIGUIENTE SECCIÓN */
+#skills{
+  text-align: center;
+  width: 100%;
+}
+.different-background{
+    position: relative;
+    background-color: #c24a41;
+    min-height: 100vh; /* Garantiza que cubra al menos la pantalla completa */
+    padding: 5vh 2vw; /* Espaciado interno */
+    display: flex;
+    flex-direction: column; /* Los elementos se apilan en columna */
+    align-items: center; /* Centra horizontalmente los elementos */
+
+} 
+.keywordfrontend h2{
+    color: #f6eee4;
+    font-size: 6rem;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+.keywordseo {
+    position: absolute;
+    top: 30vh; /* Ajusta según la altura deseada */
+    left:10vw; /* Alinea hacia la izquierda */
+    color: #f6eee4;
+    font-size: 3rem
+}
+.keywordmarketing h2{
+    position: absolute;
+    font-size: 4rem;
+    color: #f6eee4;
+    margin: 2vh 0;
+    top: 2vh;
+    left: 20vw;
+}
+.languages{
+    position: absolute;
+    font-size: 3rem;
+    color: #f6eee4;
+    margin: 2vh auto;
+    top: 60vh;
+    left: 10vw;
+}
+.creativity h2{
+    position: absolute;
+    left: 20vw;
+    top: 39vh;
+    font-size: 4rem;
+    color: #f6eee4;
+}
+.bar{
+    position: absolute;
+    width: 15%;
+    height: 2px;
+    margin: 2vh auto;
+    top: 33vh;
+}
+.and{
+    position: absolute;
+    left: 48vw;
+    top: 63vh;
+    font-size: 2.3vw;
+    color: #f6eee4;
+    transform: scaleX(-50%);
+}
+/* Punto en movimiento */ 
+.loader {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background: #f6eee4;
+    margin: 2vh auto;
+    top:31vh;
+    animation: rotationBack 1s ease-in-out infinite reverse;
+  }
+  
+  .loader::before {
+    content: '';
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    transform: rotate(45deg);
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background: #f6eee4;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  .loader::after {
+    content: '';
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: #ad332a;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  @keyframes rotationBack {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+/*About Me Section*/
+.thirdbackground {
+  position: relative;
+  background-color: #d3eaf2;
+  min-height: 100vh; /* Ocupa al menos la altura de la ventana */
+  display: flex;
+  flex-direction: row; /* Diseño en filas: imagen y texto en horizontal */
+  justify-content: space-between; /* Espacio entre imagen y texto */
+  align-items: center; /* Alinea los elementos verticalmente */
+  padding: 5vw; /* Agrega espacio interno */
+  gap: 2rem; /* Espaciado entre elementos */
+  overflow: visible; /* Asegúrate de que los elementos no se corten */
+}
+.fotoaboutme {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  width: auto; /* Asegúrate de que no colapse */
+  height: auto;
+  flex-basis: 30%; /* Espacio reservado para la imagen */
+}
+
+.fotoaboutme img {
+  min-width: 10%;
+  max-width: 100%;
+  width: 100%; /* Garantiza que se ajuste al contenedor */
+  height: auto; /* Mantén las proporciones */
+  object-fit: cover; /* Ajusta cómo se escala la imagen */
+  border-radius: 10px;
+  display: block; /* Asegúrate de que sea renderizada correctamente */
+}
+
+
+.aboutmetitle{
+    font-size: 9vh;
+    font-family: myFont1;
+    position: relative;
+    margin-left: 43%;
+    margin-top: -10%;
+    color: #ad332a;
+}
+
+.introduccion{
+    position: relative;
+    font-size: 2.5vh;
+    margin-left: 43%;
+    margin-top: -33%;
+    color: #ad332a;
+}
+.textoaboutme{
+    position: relative;
+    font-size: 2.5vh;
+    margin-left: 43%;
+    margin-right: 15%;
+    margin-top: 1.5%;
+    color: #73201a;
+}
+.technologies {
+    position: relative;
+    margin-left: 43%;
+    margin-top: 1.5%;
+    font-size: 2vh;
+    color: #ad332a;
+}
+
+.technologies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(1vw, 1fr)); /* Tres columnas más estrechas */ /* Espaciado más pequeño entre filas y columnas */
+    justify-content: center;
+    border-radius: 10px;
+    padding-right: 30%;
+}
+
+.tech-item {
+    border-radius: 5px;
+    padding-top: 7%; /* Reduce el espacio dentro de cada caja */
+    font-size: 1.1rem; /* Fuente más pequeña */
+    
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tech-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+/*experience section*/
+.fourth-background{
+  background-color: #c24a41;
+  padding-top: 10vh;
+  padding-bottom: 20vh;
+}
+.experience-path{
+  position: relative;
+  width: 100%;
+  padding: 5% 6%;
+  overflow: hidden;
+}
+.path-line{
+  width: 100%;
+  display: block;
+}
+.experience-title h2{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+  margin-bottom: 3vh;
+  font-size: 3rem;
+  color: #d3eaf2;
+  font-family: "myFont2";
+}
+#marks{
+  position: absolute;
+  color: #d3eaf2;
+  font-size: 1.8rem;
+  width: 100%;
+  height: 100%;
+}
+.mark-1{
+    margin-left: 10.2%;
+    margin-top: -13.8%;
+}
+.mark-2{
+    margin-left: 32.45%;
+    margin-top: 3.7%;
+}
+.mark-3{
+    margin-left: 55.1%;
+    margin-top: -2.3%;
+}
+.mark-4{
+    margin-left: 78%;
+    margin-top: -7.3%;
+}
+/*Experience info*/
+#experience-info {
+    position: relative;
+}
+
+.expinf1 {
+    position: absolute;
+    background-color: #d3eaf2;
+    display: inline-block;
+    margin-left: 5vw;
+    padding: 1.5rem;
+    border-radius: 20px;
+}
+.expinf2 {
+    position: absolute;
+    background-color: #d3eaf2;
+    display: inline-block;
+    margin-left: 31.5vw;
+    margin-top: 42vh;
+    padding: 1.5rem;
+    border-radius: 20px;
+}
+.expinf3 {
+    position: absolute;
+    background-color: #d3eaf2;
+    display: inline-block;
+    margin-left: 52vw;
+    padding: 1.5rem;
+    border-radius: 20px;
+}
+.expinf4 {
+    position: absolute;
+    background-color: #d3eaf2;
+    display: inline-block;
+    margin-left: 75vw;
+    margin-top: 40vh;
+    padding: 1.5rem;
+    border-radius: 20px;
+}
+/*Contact section*/
+#contact{
+  padding: 15% 0;
+  background-color: #d3eaf2;
+}
+.contact-section {
+    display:block;
+    text-align: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    font-family: 'Georgia', serif;
+  }
+  
+  .contact-section h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #111;
+  }
+  
+  .contact-section .highlight {
+    color: #ff5733; /* Un naranja vibrante */
+    font-style: italic;
+  }
+  
+  .contact-section .email {
+    font-size: 3rem;
+    color: #ff5733;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+  
+  .contact-section .action {
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    color: #333;
+  }
+  
+  .contact-section .arrow {
+    font-size: 2rem;
+    color: #111;
+    margin-right: 0.5rem;
+  }
+  
+  .contact-section .social-links {
+    margin-top: 3rem;
+    font-size: 1.4rem;
+  }
+  
+  .contact-section .social-links a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: #111;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-section .social-links a:hover {
+    color: #ff5733;
+  }
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  #div1 a, #div2 a {
+    font-size: 3.2vw; 
+    text-align: center;
+  }
+  /* Image */
+  #foto{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 20vh;
+    height: auto;
+  }
+  #foto img{
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .nombre{
+    position: relative;
+    text-align: left;
+    margin: 1rem auto 0 auto; /* Márgenes automáticos para centrar */
+    
+    font-size: 2rem;
+  }
+  .apellido{
+    position: relative;
+    font-size: 2rem;
+  }
+  .texto1 h2, .texto1 h3{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20%;
+  }
+  .texto1 h2{
+    margin-top: 8%;
+  }
+  .common-background {
+    background-color: #f6eee4; /* Asegura que el fondo cubra toda la sección */
+    padding-bottom: 20vh; /* Aumenta el espacio inferior */
+  }
+}
