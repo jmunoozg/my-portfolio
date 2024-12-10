@@ -20,6 +20,7 @@ html{
 .common-background{
     background-color: #f6eee4;
     min-height: 100vh;
+    max-width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,23 +80,30 @@ nav {
   width: 100%;
   height: auto;
 }
-/* Foto principal */
+/* Contenedor de la foto */
+/* Contenedor de la foto */
 #foto {
   display: flex;
-  flex-direction: column; /* Alinea los elementos verticalmente */
-  align-items: center; /* Centra horizontalmente */
-  justify-content: center; /* Centra verticalmente */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
   margin: 0 auto;
-  padding-top: 13vh; 
   width: 100%;
-  max-width: 50%;
+  height: calc(100vh - 15vh); /* Ocupa toda la altura menos la del nav */
+  max-height: 70vh; /* Limita el tamaño máximo para evitar que sea demasiado alta */
+  padding: 0;
+  transform: translateY(15%);
 }
 
-#foto img{
-    max-width: 50%; /* Ajusta el ancho máximo para que sea responsive */
-    height: auto;
-    border-radius: 10px;
+/* Imagen */
+#foto img {
+  max-width: 40%; /* Reduce el ancho máximo de la imagen */
+  max-height: 80%; /* Reduce la altura máxima de la imagen */
+  height: auto; /* Mantiene las proporciones de la imagen */
+  object-fit: cover; /* Ajusta cómo se escala la imagen */
+  border-radius: 10px; /* Bordes redondeados */
 }
+
+
 .nombre{
     position: relative;
     text-align: center;
@@ -135,6 +143,16 @@ nav {
     font-size: 1.5rem;
     background: rgba(0, 0, 0, 0);
 }
+@media (max-width: 768px) {
+  #foto {
+    height: calc(100vh - 10vh); /* Ajusta el espacio en pantallas pequeñas */
+  }
+
+  #foto img {
+    max-width: 95%; /* Permite que sea un poco más grande en pantallas pequeñas */
+  }
+}
+
 /* Estilos iniciales y animación */
 .fade-up {
     opacity: 0;
@@ -147,71 +165,68 @@ nav {
     transform: translateY(0);
   }
 /* SIGUIENTE SECCIÓN */
-#skills{
+#skills {
   text-align: center;
   width: 100%;
 }
-.different-background{
-    position: relative;
-    background-color: #c24a41;
-    min-height: 100vh; /* Garantiza que cubra al menos la pantalla completa */
-    padding: 5vh 2vw; /* Espaciado interno */
-    display: flex;
-    flex-direction: column; /* Los elementos se apilan en columna */
-    align-items: center; /* Centra horizontalmente los elementos */
 
-} 
-.keywordfrontend h2{
-    color: #f6eee4;
-    font-size: 6rem;
-    text-align: center;
-    margin-bottom: 5vh;
+.different-background {
+  position: relative;
+  background-color: #c24a41;
+  min-height: 100vh; 
+  max-width: 100vw;
+  padding: 5vh 10vw; /* Espaciado interno */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
+  grid-template-rows: auto auto auto; /* Altura automática */
+  gap: 5vh; /* Espaciado entre filas */
+  align-items: center; /* Alinea verticalmente los elementos */
 }
+
+.keywordfrontend h2 {
+  color: #f6eee4;
+  font-size: 6rem;
+  text-align: center;
+  grid-column: 1 / span 2; /* Ocupa ambas columnas */
+  grid-row: 1 / 2;
+}
+
 .keywordseo {
-    position: absolute;
-    top: 30vh; /* Ajusta según la altura deseada */
-    left:10vw; /* Alinea hacia la izquierda */
-    color: #f6eee4;
-    font-size: 3rem
+  color: #f6eee4;
+  font-size: 3rem;
+  text-align: left;
+  grid-column: 1 / 2; /* Primera columna */
 }
-.keywordmarketing h2{
-    position: absolute;
-    font-size: 4rem;
-    color: #f6eee4;
-    margin: 2vh 0;
-    top: 2vh;
-    left: 20vw;
+
+.keywordmarketing h2 {
+  color: #f6eee4;
+  font-size: 3rem;
+  text-align: right;
+  grid-column: 2 / 3; /* Segunda columna */
 }
-.languages{
-    position: absolute;
-    font-size: 3rem;
-    color: #f6eee4;
-    margin: 2vh auto;
-    top: 60vh;
-    left: 10vw;
+
+.languages {
+  color: #f6eee4;
+  font-size: 3rem;
+  text-align: left;
+  grid-column: 1 / 2; /* Primera columna */
 }
-.creativity h2{
-    position: absolute;
-    left: 20vw;
-    top: 39vh;
-    font-size: 4rem;
-    color: #f6eee4;
+
+.creativity h2 {
+  color: #f6eee4;
+  font-size: 3rem;
+  text-align: right;
+  grid-column: 2 / 3; /* Segunda columna */
 }
-.bar{
-    position: absolute;
-    width: 15%;
-    height: 2px;
-    margin: 2vh auto;
-    top: 33vh;
+
+.bar {
+  grid-column: 1 / span 2; /* Ocupa ambas columnas */
+  width: 50%;
+  height: 2px;
+  margin: 0 auto;
+  background-color: #f6eee4;
 }
-.and{
-    position: absolute;
-    left: 48vw;
-    top: 63vh;
-    font-size: 2.3vw;
-    color: #f6eee4;
-    transform: scaleX(-50%);
-}
+
 /* Punto en movimiento */ 
 .loader {
     position: absolute;
@@ -263,179 +278,217 @@ nav {
 .thirdbackground {
   position: relative;
   background-color: #d3eaf2;
-  min-height: 100vh; /* Ocupa al menos la altura de la ventana */
-  display: flex;
-  flex-direction: row; /* Diseño en filas: imagen y texto en horizontal */
-  justify-content: space-between; /* Espacio entre imagen y texto */
-  align-items: center; /* Alinea los elementos verticalmente */
-  padding: 5vw; /* Agrega espacio interno */
-  gap: 2rem; /* Espaciado entre elementos */
-  overflow: visible; /* Asegúrate de que los elementos no se corten */
+  min-height: 100vh;
+  max-width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+  grid-template-rows: auto auto; /* Dos filas ajustables */
+  align-items: center;
+  padding: 5vw;
+  gap: 2rem;
+  overflow: hidden; /* Evita overflow */
 }
+
 .fotoaboutme {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  width: auto; /* Asegúrate de que no colapse */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: auto;
-  flex-basis: 30%; /* Espacio reservado para la imagen */
 }
 
 .fotoaboutme img {
-  min-width: 10%;
-  max-width: 100%;
-  width: 100%; /* Garantiza que se ajuste al contenedor */
-  height: auto; /* Mantén las proporciones */
-  object-fit: cover; /* Ajusta cómo se escala la imagen */
+  max-width: 100%; /* Ajusta al tamaño del contenedor */
+  height: auto; /* Mantén proporciones */
+  object-fit: contain; /* Escala correctamente */
   border-radius: 10px;
-  display: block; /* Asegúrate de que sea renderizada correctamente */
+  display: block;
 }
 
-
-.aboutmetitle{
-    font-size: 9vh;
-    font-family: myFont1;
-    position: relative;
-    margin-left: 43%;
-    margin-top: -10%;
-    color: #ad332a;
+.aboutmetitle {
+  font-size: calc(2rem + 2vw); /* Escala dinámicamente */
+  font-family: myFont1;
+  text-align: center; /* Centra el título */
+  color: #ad332a;
 }
 
-.introduccion{
-    position: relative;
-    font-size: 2.5vh;
-    margin-left: 43%;
-    margin-top: -33%;
-    color: #ad332a;
+.introduccion {
+  font-size: calc(1rem + 0.5vw); /* Escala dinámicamente */
+  text-align: justify; /* Mejora la lectura */
+  color: #ad332a;
 }
-.textoaboutme{
-    position: relative;
-    font-size: 2.5vh;
-    margin-left: 43%;
-    margin-right: 15%;
-    margin-top: 1.5%;
-    color: #73201a;
+
+.textoaboutme {
+  font-size: calc(1rem + 0.5vw); /* Escala dinámicamente */
+  text-align: justify; /* Mejora la lectura */
+  color: #73201a;
 }
+
 .technologies {
-    position: relative;
-    margin-left: 43%;
-    margin-top: 1.5%;
-    font-size: 2vh;
-    color: #ad332a;
+  font-size: calc(0.8rem + 0.3vw); /* Escala dinámicamente */
+  text-align: center; /* Centra el texto */
+  color: #ad332a;
 }
 
 .technologies-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(1vw, 1fr)); /* Tres columnas más estrechas */ /* Espaciado más pequeño entre filas y columnas */
-    justify-content: center;
-    border-radius: 10px;
-    padding-right: 30%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Columnas adaptables */
+  gap: 1rem; /* Espaciado uniforme */
+  justify-items: center; /* Centra elementos en las columnas */
 }
 
 .tech-item {
-    border-radius: 5px;
-    padding-top: 7%; /* Reduce el espacio dentro de cada caja */
-    font-size: 1.1rem; /* Fuente más pequeña */
-    
-    transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 5px;
+  padding: 0.5rem; /* Espaciado interno reducido */
+  font-size: 1rem;
+  text-align: center; /* Centra el texto */
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .tech-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-/*experience section*/
-.fourth-background{
-  background-color: #c24a41;
-  padding-top: 10vh;
-  padding-bottom: 20vh;
-}
-.experience-path{
-  position: relative;
-  width: 100%;
-  padding: 5% 6%;
-  overflow: hidden;
-}
-.path-line{
-  width: 100%;
-  display: block;
-}
-.experience-title h2{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2%;
-  margin-bottom: 3vh;
-  font-size: 3rem;
-  color: #d3eaf2;
-  font-family: "myFont2";
-}
-#marks{
-  position: absolute;
-  color: #d3eaf2;
-  font-size: 1.8rem;
-  width: 100%;
-  height: 100%;
-}
-.mark-1{
-    margin-left: 10.2%;
-    margin-top: -13.8%;
-}
-.mark-2{
-    margin-left: 32.45%;
-    margin-top: 3.7%;
-}
-.mark-3{
-    margin-left: 55.1%;
-    margin-top: -2.3%;
-}
-.mark-4{
-    margin-left: 78%;
-    margin-top: -7.3%;
-}
-/*Experience info*/
-#experience-info {
-    position: relative;
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.expinf1 {
-    position: absolute;
-    background-color: #d3eaf2;
-    display: inline-block;
-    margin-left: 5vw;
-    padding: 1.5rem;
-    border-radius: 20px;
+@media (max-width: 768px) {
+  .thirdbackground {
+    grid-template-columns: 1fr; /* Diseño de una columna */
+    gap: 1rem;
+    padding: 2vw;
+  }
+
+  .aboutmetitle {
+    font-size: calc(1.5rem + 1vw); /* Texto más pequeño */
+  }
+
+  .technologies-grid {
+    grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas pequeñas */
+  }
 }
-.expinf2 {
-    position: absolute;
-    background-color: #d3eaf2;
-    display: inline-block;
-    margin-left: 31.5vw;
-    margin-top: 42vh;
-    padding: 1.5rem;
-    border-radius: 20px;
+
+/*experience section*/
+.fourth-background {
+  background-color: #c24a41;
+  max-width: 100vw;
+  padding: 10vh 5vw; /* Ajuste de relleno para margen interno */
+  display: flex;
+  flex-direction: column; /* Disposición en columna */
+  align-items: center; /* Alinea elementos al centro horizontalmente */
+  gap: 5vh; /* Espaciado entre los elementos */
 }
-.expinf3 {
-    position: absolute;
-    background-color: #d3eaf2;
-    display: inline-block;
-    margin-left: 52vw;
-    padding: 1.5rem;
-    border-radius: 20px;
+
+.experience-title h2 {
+  text-align: center;
+  font-size: 3rem; /* Tamaño adaptable */
+  color: #d3eaf2;
+  font-family: "myFont2";
+  margin: 0; /* Elimina márgenes extra */
 }
+
+#experience-info {
+  display: grid; /* Usa grid para estructurar los cuadros */
+  grid-template-columns: repeat(2, 1fr); /* Dos columnas iguales */
+  gap: 3vw; /* Espaciado entre columnas */
+  width: 100%; /* Ajusta al ancho total del contenedor */
+}
+
+.expinf1,
+.expinf2,
+.expinf3,
 .expinf4 {
-    position: absolute;
-    background-color: #d3eaf2;
-    display: inline-block;
-    margin-left: 75vw;
-    margin-top: 40vh;
-    padding: 1.5rem;
-    border-radius: 20px;
+  background-color: #d3eaf2;
+  padding: 1.5rem;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra para mejor visibilidad */
+  transition: transform 0.3s;
 }
+
+.expinf1:hover,
+.expinf2:hover,
+.expinf3:hover,
+.expinf4:hover {
+  transform: translateY(-5px); /* Pequeño efecto al pasar el cursor */
+}
+
+.experience-path {
+  position: relative;
+  width: 100%; /* Asegura que ocupe el ancho disponible */
+  height: auto;
+}
+
+.path-line {
+  width: 100%; /* El SVG ocupa el 100% del contenedor */
+  height: auto;
+}
+
+#marks {
+  position: absolute;
+  top: 0; /* Ajusta los marcadores al inicio del contenedor */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between; /* Espaciado uniforme entre marcadores */
+  align-items: center; /* Alineación vertical */
+}
+
+.mark-1,
+.mark-2,
+.mark-3,
+.mark-4 {
+  background: #d3eaf2;
+  color: #c24a41;
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  #experience-info {
+    grid-template-columns: 1fr; /* Una columna para pantallas pequeñas */
+    gap: 2rem; /* Reduce el espaciado */
+  }
+
+  .expinf1,
+  .expinf2,
+  .expinf3,
+  .expinf4 {
+    font-size: 0.9rem; /* Reduce el tamaño de fuente */
+  }
+
+  .experience-title h2 {
+    font-size: 2.5rem; /* Reduce tamaño del título */
+  }
+
+  .path-line {
+    width: 100%; /* SVG ajustado al contenedor */
+    height: auto; /* Mantiene proporciones */
+  }
+
+  .mark-1,
+  .mark-2,
+  .mark-3,
+  .mark-4 {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem; /* Ajusta los marcadores */
+  }
+}
+
 /*Contact section*/
 #contact{
   padding: 15% 0;
   background-color: #d3eaf2;
+  max-width: 100vw;
 }
 .contact-section {
     display:block;
@@ -491,51 +544,3 @@ nav {
     color: #ff5733;
   }
 /* Media query para pantallas pequeñas */
-@media (max-width: 768px) {
-  #div1 a, #div2 a {
-    font-size: 3.2vw; 
-    text-align: center;
-  }
-  /* Image */
-  #foto{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    padding-top: 20vh;
-    height: auto;
-  }
-  #foto img{
-    max-width: 50%;
-    height: auto;
-    border-radius: 10px;
-  }
-  .nombre{
-    position: relative;
-    text-align: left;
-    margin: 1rem auto 0 auto; /* Márgenes automáticos para centrar */
-    
-    font-size: 2rem;
-  }
-  .apellido{
-    position: relative;
-    font-size: 2rem;
-  }
-  .texto1 h2, .texto1 h3{
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 20%;
-  }
-  .texto1 h2{
-    margin-top: 8%;
-  }
-  .common-background {
-    background-color: #f6eee4; /* Asegura que el fondo cubra toda la sección */
-    padding-bottom: 20vh; /* Aumenta el espacio inferior */
-  }
-}
