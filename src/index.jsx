@@ -13,12 +13,15 @@ function Portfolio() {
           <a href="#skills">Skills</a>
           <a href="#about">About me</a>
         </div>
+        <div id="logo">
+          <img src={logo} alt="Logo - JM" />
+        </div>
         <div id="div2">
           <a href="#experience">Experience</a>
           <a href="#contact">Contact</a>
         </div>
       </nav>
-      <ProfileSection/>
+      <ProfileSection />
       <Keywords />
       <Aboutme />
       <Experience />
@@ -26,16 +29,21 @@ function Portfolio() {
     </div>
   );
 }
+
 function ProfileSection() {
   return (
     <section id="profile-section" className="common-background">
-      <ProfilePicture image={cv1} />
+      <div id="profile-container">
+        <h2 className="nombre">Jaime</h2>
+        <ProfilePicture image={cv1} />
+        <h2 className="apellido">Muñoz</h2>
+      </div>
       <Logo image={logo} />
-      <NameDisplay firstName="Jaime" lastName="Muñoz" />
       <TextSection />
     </section>
   );
 }
+
 
 function ProfilePicture({ image }) {
   return (
@@ -47,14 +55,13 @@ function ProfilePicture({ image }) {
 function Logo ({image}) {
   return(
     <div id="logo">
-      <img src={image} alt="Logo - JM" />
     </div>
   )
 }
 
 function NameDisplay({ firstName, lastName }) {
   return (
-    <div>
+    <div id="name-display">
       <h2 className="nombre">{firstName}</h2>
       <h2 className="apellido">{lastName}</h2>
     </div>
@@ -99,7 +106,7 @@ function Keywords() {
     <div className='fade-up keywordmarketing'>
       <h2>Digital Marketing</h2>
     </div>
-    <div className='fade-up languages'>
+    <div className='fade-up detail'>
       <h2>Detail</h2>
     </div>
     <div className="fade-up creativity">
@@ -111,7 +118,6 @@ function Keywords() {
     <div className="fade-up and">
       <h2>&</h2>
     </div>
-    <div className="fade-up loader"></div>
     </section>
   );
 }
