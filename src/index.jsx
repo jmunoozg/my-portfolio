@@ -6,6 +6,21 @@ import imgaboutme from './images/imgaboutme.jpg';
 
 
 function Portfolio() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simular un tiempo de carga
+    const timer = setTimeout(() => {
+      setLoading(false); // Ocultar el loader después de 3 segundos (puedes ajustarlo)
+    }, 1100);
+
+    return () => clearTimeout(timer); // Limpiar el temporizador
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <div>
       <nav>
@@ -29,6 +44,15 @@ function Portfolio() {
     </div>
   );
 }
+
+function Loader() {
+  return (
+    <div className="loader-container">
+      <img className="rotating-logo" src={logo} alt="Loading Logo" />
+    </div>
+  );
+}
+
 
 function ProfileSection() {
   return (
@@ -57,15 +81,6 @@ function Logo ({image}) {
     <div id="logo">
     </div>
   )
-}
-
-function NameDisplay({ firstName, lastName }) {
-  return (
-    <div id="name-display">
-      <h2 className="nombre">{firstName}</h2>
-      <h2 className="apellido">{lastName}</h2>
-    </div>
-  );
 }
 
 function TextSection() {
@@ -222,10 +237,11 @@ function Contact() {
         freelance projects, or just to brainstorm ideas.
       </p>
       <div class="social-links">
-        <a href="www.linkedin.com/in/jaime-muñoz-gabaldón" target='_blank' rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://github.com" target="_blank">GitHub</a>
-        <a href="https://twitter.com" target="_blank">Instagram</a>
+        <a href="www.linkedin.com/in/jaime-muñoz-gabaldón">LinkedIn</a>
+        <a href="https://github.com">GitHub</a>
+        <a href="https://twitter.com">Instagram</a>
       </div>
+      
     </section>
   )
 }

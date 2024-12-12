@@ -18,6 +18,38 @@ html{
     scroll-behavior: smooth;
     overflow-x: hidden;
 }
+/* Contenedor del loader */
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #d3eaf2; /* Fondo de la pantalla de carga */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+/* Animación de rotación */
+.rotating-logo {
+  width: 8em; /* Tamaño del logo */
+  height: auto;
+  animation: spin 2s linear infinite; /* Animación de rotación */
+}
+
+/* Definición de la animación */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /*secciones*/
 /* Contenedor principal */
 .common-background {
@@ -58,8 +90,10 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 80px;
+  max-width: 100px;
   height: auto;
+  margin: 0;
+  padding: 0;
 
 }
 
@@ -72,55 +106,61 @@ nav {
 #div1 a, #div2 a {
   text-decoration: none;
   color: black;
-  font-size: 1.5rem;
+  font-size: 2.3rem;
   white-space: nowrap;
   transition: letter-spacing 0.4s ease-in-out;
 }
 
 #div1 a:hover,
 #div2 a:hover {
-  color: #c94136;
+  
   letter-spacing: 1px;
 }
 
-/* Sección de la foto */
-#foto {
+
+/* Mostrar nombre */
+#profile-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 12vh; /* Evita superposición con el nav */
-  width: 100%;
-  padding: 2rem;
-  flex: 0 1 auto;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #fdf8f4; /* Fondo claro */
 }
 
-/* Imagen de perfil */
-#foto img {
-  width: 100%;
-  max-width: 400px; /* Limita el ancho máximo */
-  height: auto;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-/* Mostrar nombre */
 #profile-container {
-  display: flex; /* Alineación horizontal */
-  align-items: center; /* Alineación vertical al centro */
-  justify-content: space-between; /* Espaciado entre los nombres y la imagen */
-  width: 100%; /* Ocupa todo el ancho del contenedor */
-  max-width: 600px; /* Ancho máximo */
-  margin: 2rem auto; /* Centrado horizontal y margen vertical */
+  display: flex;
+  flex-direction: row; /* Coloca los elementos en fila */
+  justify-content: space-between; /* Espacia los nombres en los lados */
+  align-items: center; /* Alinea verticalmente los elementos */
+  max-width: 800px; /* Limita el ancho del contenedor */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  padding: 2rem 0;
+  margin-top: 10vh;
 }
 
-/* Nombres a los lados */
 .nombre,
 .apellido {
-  font-size: 1.8rem; /* Tamaño del texto */
-  color: #c94136; /* Color personalizado */
-  flex: 0 0 auto; /* No se redimensionan */
-  margin: 0 1rem; /* Espaciado horizontal */
-  text-align: center;
+  font-size: 2.8rem; /* Tamaño del texto */
+  font-weight: bold;
+  color: #c94136; /* Color del texto */
+  margin: 0; /* Elimina márgenes adicionales */
+  overflow-x: visible;
+}
+
+#foto {
+  display: flex;
+  justify-content: center; /* Centra la imagen */
+  align-items: center;
+  width: 100%;
+  max-width: 600px; /* Tamaño máximo de la imagen */
+  margin: 0 2rem; /* Espaciado horizontal */
+}
+
+#foto img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 /* Sección de texto */
@@ -143,6 +183,22 @@ nav {
   font-size: 1.5rem;
   margin: 0.5rem 0;
 }
+/* Media query para tu pantalla */
+@media (min-width: 1200px) and (max-width: 2100px) {
+  .texto1 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute; /* Cambiamos a posición absoluta */
+    top: 55%; /* Ajusta la altura */
+    right: 10%; /* Posiciona cerca del apellido */
+    transform: translateY(-50%); /* Centra el texto verticalmente respecto a su propio contenedor */
+    text-align: left;
+  }
+}
+
+
+
 
 /* Ajustes responsivos */
 @media (max-width: 768px) {
@@ -167,7 +223,7 @@ nav {
   /* Nombre */
   .nombre {
     margin: 0; /* Sin márgenes adicionales */
-    padding-bottom: 0; /* Elimina cualquier relleno entre nombre e imagen */
+    padding-bottom: 0.8rem; /* Elimina cualquier relleno entre nombre e imagen */
     font-size: 1.5rem; /* Tamaño del texto */
     font-weight: bold;
     color: #c94136;
@@ -199,7 +255,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95); /* Fondo blanco semitransparente */
+    background: #fdf8f4; /* Fondo blanco semitransparente */
     z-index: 1000;
     display: flex;
     justify-content: space-between;
@@ -253,10 +309,10 @@ nav {
 /* Contenedor principal */
 .different-background {
   position: relative;
-  background-color: #c24a41;
+  background-color: #ad332a;
   min-height: 100vh;
   width: 100%;
-  padding: 5vh 5%;
+  padding: 5vh 10%;
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Tres columnas: izquierda, centro, derecha */
   grid-template-rows: auto auto auto auto; /* Filas automáticas */
@@ -274,7 +330,7 @@ nav {
 
 .keywordfrontend h2 {
   color: #f6eee4;
-  font-size: 5rem;
+  font-size: 7.5rem;
 }
 
 /* Skills superiores (SEO & Digital Marketing) */
@@ -282,22 +338,22 @@ nav {
   grid-column: 1 / 2; /* Primera columna */
   text-align: left;
   color: #f6eee4;
-  font-size: 2.5rem;
+  font-size: 4rem;
 }
 
 .keywordmarketing {
   grid-column: 3 / 4; /* Última columna */
   text-align: right;
   color: #f6eee4;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
 }
 
 /* Barra centrada en la misma fila */
 .bar {
   grid-column: 2 / 3; /* Columna del medio */
   grid-row: 2; /* Mismo nivel que las skills superiores */
-  width: 70%;
-  height: 2px;
+  width: 60%;
+  height: 5px;
   margin: 0 auto;
   background-color: #f6eee4;
 }
@@ -307,14 +363,14 @@ nav {
   grid-column: 1 / 2; /* Primera columna */
   text-align: left;
   color: #f6eee4;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
 }
 
 .creativity {
   grid-column: 3 / 4; /* Última columna */
   text-align: right;
   color: #f6eee4;
-  font-size: 2.5rem;
+  font-size: 3.5rem;
 }
 
 /* AND centrado en la misma fila */
@@ -327,7 +383,7 @@ nav {
 
 .and h2 {
   color: #f6eee4;
-  font-size: 3.5rem;
+  font-size: 5rem;
   margin: 0;
 }
 
@@ -520,7 +576,7 @@ nav {
   }
 
   .fotoaboutme img {
-    max-width: 90%; /* Reduce el tamaño de la imagen */
+    max-width: 50%; /* Reduce el tamaño de la imagen */
     margin-top: 2rem; /* Añade espacio superior */
   }
 
@@ -560,7 +616,7 @@ nav {
 
 /*experience section*/
 .fourth-background {
-  background-color: #c24a41;
+  background-color: #ad332a;
   width: 100%;
   min-height: 100vh; /* Asegura que ocupe al menos el alto de la pantalla */
   display: flex;
